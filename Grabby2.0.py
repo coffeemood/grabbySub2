@@ -107,7 +107,7 @@ def choice(maxep, llist, dlist, flist):
 					finallist.append((b,c))
 		
 	finaldict = {}	
-	print 
+	print
 	for i,x in enumerate(finallist):
 		a, b = x 
 		c = i + 1
@@ -123,13 +123,12 @@ def choice(maxep, llist, dlist, flist):
 			val = int(choice)
 		except ValueError:
 		   print "Please enter the correct selection!" 
-
 		if int(choice) < 1 or int(choice) > len(finallist): 
 			print "Please enter the correct choice!"
 		else: 
 			print "Ok, downloading.... "
 			baseurl = 'http://subscene.com/'
-			url = baseurl + finaldict[i]
+			url = baseurl + finaldict[int(choice)]
 			subl = requests.get(url).text
 			finalsoup = BeautifulSoup(subl,'html.parser')
 			for link in finalsoup.find_all('a'):
@@ -185,9 +184,12 @@ def query(req):
 			choiced = dic_count[int(choice)]
 			break
 	grabjson(choiced)
-	time.sleep(0.35)
-	maxep, llist, dlist, flist = readjson()
-	#time.sleep(0.15)
+	while True:
+		try:
+			maxep, llist, dlist, flist = readjson()
+		except Exception as timeout: 
+			continue
+		break
 	return (str(maxep), llist, dlist, flist)
 
 def grabjson(urlz):
@@ -216,8 +218,13 @@ def readjson():
 				z = x[xx]
 				a, b = z 
 				llist.append(a['text'])
-				dlist.append(b['text'])
+				try:
+					dlist.append(str(b['text']))
+				except Exception as e:
+					dlist.append('Error')
+					continue 		
 		i+=1
+
 	x = 0
 	while x < len(js): 
 		c = js[x]
@@ -229,6 +236,8 @@ def readjson():
 	dmd = '''cat choice.json | /usr/bin/grep -oE 'E[[:digit:]][[:digit:]]' | /usr/bin/tr -d 'E' | /usr/bin/sort -nr | /usr/bin/head -n 1'''
 	dmdd = subprocess.Popen(dmd,stdout=subprocess.PIPE,shell=True, preexec_fn = lambda: signal(SIGPIPE, SIG_DFL))
 	maxep = dmdd.stdout.read()
+	if not maxep: 
+		maxep = 1
 	return (str(maxep),llist,dlist,flist)
 
 def _main_():
