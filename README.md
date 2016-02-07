@@ -17,6 +17,7 @@ With this update, it truly transformed that sub grabbing process. You just call 
 
 * `Python` - If you didn't have it already, you should download it. 
 * `Pip` - The python module downloader 
+* `Pup` - HTML parser for shell 
 
 ## Installation
 
@@ -62,6 +63,12 @@ Make sure you run `pip` as root and download all of these modules:
 
 ```shell 
 sudo pip install beautifulsoup4 time zipfile re requests
+```
+
+Lastly, we need to install `pup` HTML-parser: 
+
+```
+Visit [pup's repo](https://github.com/EricChiang/pup/releases/tag/v0.3.9) and download your correct version. 
 ```
 
 _Note: The packages differ from machine to machine. You might have already gotten them, some people haven\'t so it doesn't hurt to go through this process just to make sure it runs swiftly._
