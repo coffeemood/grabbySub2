@@ -3,7 +3,6 @@ import requests
 import re
 import subprocess
 import urllib2
-import time
 import json
 from bs4 import BeautifulSoup
 from signal import signal, SIGPIPE, SIG_DFL
@@ -203,7 +202,6 @@ def grabjson(urlz):
 	cmdd = subprocess.Popen(cmd,stdout=subprocess.PIPE,shell=True, preexec_fn = lambda: signal(SIGPIPE, SIG_DFL))
 
 def readjson():
-	
 	with open('choice.json') as datafile:
 		js = json.load(datafile)
 

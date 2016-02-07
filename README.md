@@ -62,7 +62,7 @@ python get-pip.py
 #### Make sure you run `pip` as root and download all of these modules: 
 
 ```shell 
-sudo pip install beautifulsoup4 time zipfile re requests
+sudo pip install beautifulsoup4 zipfile re requests
 ```
 
 #### Lastly, we need to install `pup` HTML-parser: 
