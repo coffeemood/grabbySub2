@@ -59,17 +59,25 @@ python get-pip.py
 
 ### Downloading additional modules: 
 
-Make sure you run `pip` as root and download all of these modules: 
+#### Make sure you run `pip` as root and download all of these modules: 
 
 ```shell 
 sudo pip install beautifulsoup4 time zipfile re requests
 ```
 
-Lastly, we need to install `pup` HTML-parser: 
+#### Lastly, we need to install `pup` HTML-parser: 
 
+If you have Go installed, use: 
 ```
-Visit [pup's repo](https://github.com/EricChiang/pup/releases/tag/v0.3.9) and download your correct version. 
+go get github.com/ericchiang/pup
 ```
+
+For OS X users, use 
+```
+brew install https://raw.githubusercontent.com/EricChiang/pup/master/pup.rb
+```
+
+To build from source, visit [pup's repo](https://github.com/EricChiang/pup/releases/tag/v0.3.9) and download your correct version.
 
 _Note: The packages differ from machine to machine. You might have already gotten them, some people haven\'t so it doesn't hurt to go through this process just to make sure it runs swiftly._
 
