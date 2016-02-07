@@ -61,7 +61,7 @@ python get-pip.py
 Make sure you run `pip` as root and download all of these modules: 
 
 ```shell 
-sudo pip install bs4 time zipfile re requests
+sudo pip install beautifulsoup4 time zipfile re requests
 ```
 
 _Note: The packages differ from machine to machine. You might have already gotten them, some people haven\'t so it doesn't hurt to go through this process just to make sure it runs swiftly._
