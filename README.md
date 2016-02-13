@@ -19,9 +19,11 @@ With this update, it truly transformed that sub grabbing process. You just call 
 * `Pip` - The python module downloader 
 * `Pup` - HTML parser for shell 
 
+_Note: Current version works on OS X & Linux only. GUI coming soon!_
+
 ## Installation
 
-We needs to download a couple of stuffs first
+We need to download a couple of stuffs first
 
 ### Install `Brew` (OS X users only) 
 	
