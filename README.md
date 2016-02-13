@@ -21,7 +21,7 @@ With this update, it truly transformed that sub grabbing process. You just call 
 
 ## Installation
 
-We first needs to download a couple of stuffs first
+We needs to download a couple of stuffs first
 
 ### Install `Brew` (OS X users only) 
 	
