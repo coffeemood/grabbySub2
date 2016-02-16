@@ -88,6 +88,12 @@ _Note: The packages differ from machine to machine. You might have already gotte
 	
 #### Creating an alias for ease of use: 
 
+**Note:** 
+```
+Due to some dependencies problem with PUP, it can get tricky if you use another shell other than bash. If this is the case, please use bash when you need to run Grabby. I will try to resolve this issue soon.
+```
+
+
 ```shell 
 alias grabby='python ~/Downloads/Grabby2.0.py' 
 ```
@@ -137,6 +143,8 @@ res = ["480p","720p","1080p","HDTV","JYK","etc..."]
 
 
 - [ ] Even faster :exclamation: The current version isn't so bad. Version 2.0 runs on python so it's almost double the speed of the first one which was as slow as a bash script can get
+
+- [ ] Completely eliminate dependencies by packaging pup as well as python modules along with the source.
 
 - [ ] Work on a GUI, integrate into a small handy taskbar/dock utility which improves users' experience...
 
