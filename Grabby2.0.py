@@ -12,7 +12,7 @@ def choice(maxep, llist, dlist, flist):
 
 	media = ['Movie','TV']
 	language = ["English","Chinese","Arabian","French","Spanish","Danish","German","Vietnamese"]
-	rangelist = range(1, int(maxep)+1)
+	rangelist = xrange(1, int(maxep)+1)
 	episodes = [('E' + str(s).zfill(2)) for s in rangelist]
 	res = ["480p","720p","1080p","OTHER"]
 	dictFilter = {}
@@ -154,9 +154,7 @@ def query(req):
 	link = base_link + req
 	htmll = requests.get(link).text
 	soup = BeautifulSoup(htmll,'html.parser')
-	links = [] 
-	for i in soup.find_all('a'):
-		links.append(i.get('href'))
+	links = [i.get('href') for i in [x for x in soup.find_all('a')]]
 	print 'Which one again?' 
 	count = 1
 	dic_count = {}
@@ -231,7 +229,7 @@ def readjson():
 				flist.append(c[cc])
 		x += 1 
 	
-	dmd = '''cat choice.json | /usr/bin/grep -oE 'E[[:digit:]][[:digit:]]' | /usr/bin/tr -d 'E' | /usr/bin/sort -nr | /usr/bin/head -n 1'''
+	dmd = '''cat choice.json | grep -oE 'E[[:digit:]][[:digit:]]' | tr -d 'E' | sort -nr | head -n 1'''
 	dmdd = subprocess.Popen(dmd,stdout=subprocess.PIPE,shell=True, preexec_fn = lambda: signal(SIGPIPE, SIG_DFL))
 	maxep = dmdd.stdout.read()
 	if not maxep: 
