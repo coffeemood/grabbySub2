@@ -17,75 +17,40 @@ def choice(maxep, llist, dlist, flist):
 	res = ["480p","720p","1080p","OTHER"]
 	dictFilter = {}
 	finallist = []
-	while True: 
-		print 
-		countmedia = 0
-		for x, i in enumerate(media):
-			print x+1, i 
-			countmedia += 1
-		dictFilter['media'] = raw_input('Media Type > ')
-		try:
-				val = int(dictFilter['media'])
-		except ValueError:
-	   		print "Please enter the correct selection!"
-		if (val <= 0 or val > countmedia): 
-			print 'Please select movie or tv only!'
-		else: 
-			final = val - 1 
-			dictFilter['media'] = media[final]
-			break
-	while True: 
-		print 
-		countlang = 0
-		for x, i in enumerate(language):
-			print x+1, i
-			countlang += 1
-		dictFilter['language'] = raw_input('Language > ')
-		try:
-				val = int(dictFilter['language'])
-		except ValueError:
-	   		print "Please enter the correct selection!" 
-		if (val <= 0 or val > countlang): 
-			print 'Please select the right language!'
-		else: 
-			final = val - 1 
-			dictFilter['language'] = language[final]
-			break
-	while True: 
-		print 
-		countep = 0
-		for x, i in enumerate(episodes):
-			print x+1,str(i)
-			countep += 1
-		dictFilter['episodes'] = raw_input('Episode > ')
-		try:
-				val = int(dictFilter['episodes'])
-		except ValueError:
-	   		print "Please enter the correct selection!"
-		if (val <= 0 or val > countep): 
-			print 'Please select the correct episode number!' 
-		else: 
-			final = val - 1 
-			dictFilter['episodes'] = str(episodes[final])
-			break
-	while True: 
-		countres = 0
-		print 
-		for x, i in enumerate(res):
-			print x+1, i 
-			countres += 1
-		dictFilter['res'] = raw_input('Resolution > ')
-		try:
-			val = int(dictFilter['res'])
-		except ValueError:
-	   		print "Please enter the correct selection!"
-		if (val <= 0 or val > countres): 
-			print 'Please select the right resolution!'
-		else: 
-			final = val - 1 
-			dictFilter['res'] = res[final]
-			break
-
+	keyDict = {'media':media,'language':language,'episodes':episodes,'res':res}
+	def Choicy(typezz):
+		print
+		if typezz == 'media':
+			msg1 = 'Media Type > '
+			msg2 = 'Please select movie or tv only!'
+		elif typezz == 'language':
+			msg1 = 'Language > '
+			msg2 = 'Please select a right language!'
+		elif typezz == 'episodes':
+			msg1 = 'Episode > '
+			msg2 = 'Please select a correct episode number!'
+		elif typezz == 'res':
+			msg1 = 'Resolution > '
+			msg2 = 'Please select a correct resolution!'		
+		reflist = keyDict[str(typezz)]
+		while True:
+			countmedia = 0
+			for x, i in enumerate(reflist):
+				print x+1, i 
+				countmedia += 1
+			dictFilter[typezz] = raw_input(msg1)
+			try:
+					val = int(dictFilter[typezz])
+			except ValueError:
+		   		print "Please enter the correct selection!"
+			if (val <= 0 or val > countmedia): 
+				print msg2
+			else: 
+				final = val - 1 
+				dictFilter[typezz] = reflist[final]
+				break
+	for i in keyDict:
+		Choicy(i)
 	la = zip(llist,dlist,flist)
 	for i in la:
 		a, b, c = i 
@@ -237,12 +202,10 @@ def readjson():
 	return (str(maxep),llist,dlist,flist)
 
 def _main_():
-
 	reqMov = raw_input('What are you watching? : ')
 	movie = ""
 	for i in reqMov.split():
 		movie += (i + '+')
 	maxep, llist, dlist, flist = query(movie)
 	returndict = choice(str(maxep), llist, dlist, flist)
-	
 _main_()
